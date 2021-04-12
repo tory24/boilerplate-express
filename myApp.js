@@ -6,11 +6,13 @@ console.log('Hello World')
 
 //Get request to post hello express when you visit the root domain
 app.get('/', function(req, res) {
-    //res.send('Hello Express');
+  //res.send('Hello Express');
 
-    //Serve a HTML File
-    res.sendFile(__dirname + '/views/index.html');
-  });
+  //Serve a HTML File
+  res.sendFile(__dirname + '/views/index.html');
+});
+
+app.use('/public', express.static(__dirname + '/public'));
 
 
 module.exports = app;
