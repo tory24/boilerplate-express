@@ -35,8 +35,14 @@ app.get('/now', function(req, res, next) {
 
 app.use('/public', express.static(__dirname + '/public'));
 
+//Route Parameter Input from the Client
 app.get('/:word/echo', function(req,res) {
   res.send({'echo':req.params.word});
 });
+
+//Query Parameter Input from the Client
+app.get('/name', function(req,res) {
+  res.json({'name': `${req.query.first} ${req.query.last}`})
+})
 
 module.exports = app;
