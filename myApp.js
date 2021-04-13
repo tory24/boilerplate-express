@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+var response = 'Hello json';
+
 //Console Log Hello World
 console.log('Hello World')
 
@@ -14,13 +16,21 @@ app.get('/', function(req, res) {
 
 //Serve a JSON at url/json
 app.get('/json', function(req, res) {
-  if(process.env.MESSAGE_STYLE === 'uppercase') {
-    response = 'Hello world'.toUpperCase();
-  } else {
-    esponse = 'Hello world';
+  if(process.env.MESSAGE_STYLE === uppercase) {
+    res.json({'message': 'Hello json'});
   }
 
+
 });
+
+app.get('/json', function(req, res) {
+  if(process.env.MESSAGE_STYLE === 'uppercase') {
+    res.json({'message': response.toUpperCase()});
+  } else {
+    res.json({'message': response});
+  }
+});
+
 
 app.use('/public', express.static(__dirname + '/public'));
 
