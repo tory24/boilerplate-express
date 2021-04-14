@@ -1,10 +1,14 @@
+var bodyParser = require("body-parser");
 var express = require('express');
 var app = express();
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 var response = 'Hello json';
 
 //Console Log Hello World
-console.log('Hello World')
+console.log('Hello World');
 
 //Root level request logger function
 //NOTE: Express evaluates functions in the order they appear in the code. If we want it to work for all routes, it should be mounted before them.
@@ -43,6 +47,7 @@ app.get('/:word/echo', function(req,res) {
 //Query Parameter Input from the Client
 app.get('/name', function(req,res) {
   res.json({'name': `${req.query.first} ${req.query.last}`})
-})
+});
+
 
 module.exports = app;
